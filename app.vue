@@ -1,6 +1,17 @@
+<script lang="ts" setup>
+
+</script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <main>
+    <AppNavigation />
+    
+    <div class="containerize pt-20">
+      <div class="nuxt-page">
+        <NuxtPage/>
+      </div>
+
+      <AppFooter />
+    </div>
+  </main>
 </template>
