@@ -31,4 +31,16 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en-US',
+      },
+      link: [
+        { rel: 'icon', type: 'image/ico', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', type: 'image/ico', href: '/favicon.ico' },
+      ],
+    }
+  },
 })

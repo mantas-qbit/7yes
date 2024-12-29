@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { listCities, listCountries } from 'cclist'
+import { toast } from 'vue3-toastify'
 
 useSeoMeta({
   title: 'Secure Checkout - Complete Your Order Quickly',
@@ -126,6 +127,38 @@ function checkform() {
   }
 }
 
+async function placeOrder(){
+  const id = toast.loading('Completing purchase...', {
+      "type": "info",
+  })
+
+  await $fetch('/api/cart/submit', {
+        method: 'POST',
+        body: {
+          ...form.value,
+          products: cartStore.products,
+        },
+    }).then(() => {
+        toast.update(id, {
+            render: 'Order completed successfully! Redirecting...',
+            "type": "success",
+            isLoading: false,
+            autoClose: true,
+        })
+        // fake redirect
+        setTimeout(() => {
+          navigateTo({ name: 'success' }, { replace: true })
+        }, 1000)
+    }).catch((err) => {
+        toast.update(id, {
+            render: 'An error occurred while processing your order. Please try again later.',
+            "type": "error",
+            isLoading: false,
+            autoClose: true,
+        })
+        console.error(err)
+    })
+}
 </script>
 
 <template>
@@ -137,7 +170,7 @@ function checkform() {
       <Breadcrumbs :routes class="hidden lg:block"/>
       <h1 class="text-3xl font-semibold" id="checkout-label">Checkout</h1>
 
-      <form class="cart-form" @submit.prevent="console.log('done')">
+      <form class="cart-form" @submit.prevent="placeOrder()">
         <div class="space-y-5 pb-10">
           <p class="text-brand-light-gray">1. <span class="uppercase underline">Shipping details</span></p>
   
