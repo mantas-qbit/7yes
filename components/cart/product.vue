@@ -59,14 +59,14 @@ const emit = defineEmits(['remove'])
   <div class="cart">
     <div class="product">
       <div class="w-full col-span-2">
-        <NuxtImg format="webp" sizes="132" :src="`images/${thumbnail}`" class="aspect-square object-cover" :alt="`Thumbnail for ${title}`"/>
+        <NuxtImg format="webp" sizes="132" :src="`images/${thumbnail}`" class="aspect-square object-cover w-full" :alt="`Thumbnail for ${title}`"/>
       </div>
 
-      <div class="col-span-6 space-y-2">
+      <div class="col-span-5 xl:col-span-6 space-y-2">
         <p class="title">{{ title }}</p>
 
-        <p v-if="features">
-          <span v-for="feature in features" class="pr-4">
+        <p v-if="features" class="flex sm:block flex-col gap-1">
+          <span v-for="feature in features" class="text-sm sm:text-base pr-4">
             <span class="text-brand-light-gray">{{ feature.key }}:</span>
             {{ feature.value }}
           </span>
@@ -79,10 +79,10 @@ const emit = defineEmits(['remove'])
         </div>
       </div>
 
-      <div class="col-span-1 flex flex-col justify-between items-end">
-        <div class="space-y-2 text-end text-lg">
-          <p>{{ priceToCurrency((price - discount) * quantity) }}</p>
-          <p v-if="discount" class="text-sm text-brand-light-gray line-through">{{ priceToCurrency(price) }}</p>
+      <div class="col-span-2 xl:col-span-1 flex flex-col justify-between items-end">
+        <div class="space-y-2 text-end text-base sm:text-lg">
+          <p class="font-thin">{{ priceToCurrency((price - discount) * quantity) }}</p>
+          <p v-if="discount" class="text-sm text-brand-light-gray line-through">{{ priceToCurrency(price * quantity) }}</p>
         </div>
 
         <button @click="emit('remove')">

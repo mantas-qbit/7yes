@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply font-medium font-inter;
+  @apply font-medium font-inter transition-colors !duration-200;
 
   & .nuxt-page {
     @apply min-h-screen;
@@ -12,7 +12,14 @@ body {
   & .containerize {
     @apply container mx-auto px-5 sm:px-10;
   }
-  
+}
+
+.btn{
+  @apply p-3 px-6 rounded-xl hoverable font-[500]
+}
+
+.input-outline {
+  @apply border-[1px] rounded-2xl px-5 py-3
 }
 
 .center {
@@ -28,12 +35,30 @@ body {
     @apply pb-8 grid grid-cols-9 gap-5;
 
     & .title {
-      @apply text-lg;
+      @apply sm:text-xl;
     }
 
     & .quantity-btn {
       @apply w-7 h-7 center;
     }
+
+  }
+
+  & .total-container {
+    @apply w-full center !justify-between;
+    
+    & p:nth-child(1) {
+      @apply text-brand-light-gray;
+    }
+    & p:nth-child(2) {
+      @apply font-normal;
+    }
+  }
+}
+
+.cart-form{
+  & .grid-row {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-5
   }
 }
 

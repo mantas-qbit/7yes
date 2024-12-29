@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
+    "./node_modules/preline/preline.js,",
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
@@ -12,8 +14,8 @@ export default {
     extend: {
       colors: {
         brand: {
-          'primary': '#448c74',
-          'light-gray': '#666666'
+          'primary': '#448c74', //# 448c74
+          'light-gray': '#999999' // 666666
         },
       },
       fontFamily: {
@@ -21,6 +23,8 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('preline/plugin'),
+  ],
 }
 
