@@ -1,6 +1,6 @@
 # Nuxt Minimal Starter
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Demo @ [https://7yes.qbit.lt/](https://7yes.qbit.lt/)
 
 ## Setup
 
