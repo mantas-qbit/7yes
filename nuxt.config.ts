@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     classPrefix: '',
     classSuffix: '-mode',
     storage: 'localStorage', // or 'sessionStorage' or 'cookie'
-    storageKey: 'nuxt-color-mode'
+    storageKey: 'nuxt-color-mode',
   },
 
   plugins: ['~/plugins/preline.client.ts'],
@@ -41,6 +41,6 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/ico', href: '/favicon.ico' },
         { rel: 'apple-touch-icon', type: 'image/ico', href: '/favicon.ico' },
       ],
-    }
+    },
   },
 })

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 const menu = [
   {
     label: 'Categories',
@@ -7,17 +6,17 @@ const menu = [
     children: [
       {
         label: 'Category one',
-        to: 'fake-link'
+        to: 'fake-link',
       },
       {
         label: 'Category Two',
-        to: 'fake-link'
+        to: 'fake-link',
       },
       {
         label: 'Category Three',
-        to: 'fake-link'
-      }
-    ]
+        to: 'fake-link',
+      },
+    ],
   },
   {
     label: 'Pages',
@@ -25,17 +24,17 @@ const menu = [
     children: [
       {
         label: 'Page one',
-        to: 'fake-link'
+        to: 'fake-link',
       },
       {
         label: 'Page Two',
-        to: 'fake-link'
+        to: 'fake-link',
       },
       {
         label: 'Page Three',
-        to: 'fake-link'
-      }
-    ]
+        to: 'fake-link',
+      },
+    ],
   },
   {
     label: 'Account',
@@ -43,40 +42,41 @@ const menu = [
     children: [
       {
         label: 'Profile',
-        to: 'fake-link'
+        to: 'fake-link',
       },
       {
         label: 'Settings',
-        to: 'fake-link'
+        to: 'fake-link',
       },
       {
         label: 'Logout',
-        to: 'fake-link'
-      }
-    ]
+        to: 'fake-link',
+      },
+    ],
   },
   {
     label: 'Blog',
-    to: 'fake-link'
+    to: 'fake-link',
   },
   {
     label: 'Reviews',
-    to: 'fake-link'
-  }
+    to: 'fake-link',
+  },
 ]
 
 const mobileMenu = computed(() => {
   return [{
     label: '',
     to: '',
-    children: menu.map(item => {
+    children: menu.map((item) => {
       return {
         label: item.label,
-        to: item.to
+        to: item.to,
       }
-    })
+    }),
   }]
 })
+// eslint-disable-next-line no-undef
 const colorMode = useColorMode()
 
 const color = ref(false)
@@ -102,7 +102,7 @@ onMounted(() => {
           <Dropdown v-for="button in menu" :key="button.to" :to="button.to" :children="button.children">
             <template #default>
               <p> {{ button.label }} </p>
-              <Icon v-if="button.children" class="text-xl transition-all duration-200" icon="material-symbols:keyboard-arrow-down-rounded" alt="arrow icon"/>
+              <Icon v-if="button.children" class="text-xl transition-all duration-200" icon="material-symbols:keyboard-arrow-down-rounded" alt="arrow icon" />
             </template>
           </Dropdown>
         </div>
@@ -113,8 +113,8 @@ onMounted(() => {
           <Icon icon="tabler:sun" class="text-xl" />
 
           <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" v-model="color" value="" class="sr-only peer">
-            <div class="relative w-11 h-6 bg-brand-primary peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+            <input v-model="color" type="checkbox" value="" class="sr-only peer">
+            <div class="relative w-11 h-6 bg-brand-primary peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all" />
           </label>
 
           <Icon icon="tabler:moon" class="text-lg" />
@@ -124,16 +124,15 @@ onMounted(() => {
           <Icon icon="tabler:search" class="text-2xl" />
         </button>
 
-        <NuxtLink class="hidden xl:block" :to="{ name: 'fake-link'}">
+        <NuxtLink class="hidden xl:block" :to="{ name: 'fake-link' }">
           <Icon icon="tabler:user" class="text-2xl" />
         </NuxtLink>
 
-        <Dropdown v-for="button in mobileMenu" class="block xl:hidden" :key="button.to" :to="button.to" :children="button.children">
+        <Dropdown v-for="button in mobileMenu" :key="button.to" class="block xl:hidden" :to="button.to" :children="button.children">
           <template #default>
             <Icon icon="mdi:menu" class="-ml-2 text-2xl" />
           </template>
         </Dropdown>
-          
       </section>
     </div>
   </header>

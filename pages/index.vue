@@ -133,31 +133,31 @@ async function placeOrder(){
   })
 
   await $fetch('/api/cart/submit', {
-        method: 'POST',
-        body: {
-          ...form.value,
-          products: cartStore.products,
-        },
-    }).then(() => {
-        toast.update(id, {
-            render: 'Order completed successfully! Redirecting...',
-            "type": "success",
-            isLoading: false,
-            autoClose: true,
-        })
-        // fake redirect
-        setTimeout(() => {
-          navigateTo({ name: 'success' }, { replace: true })
-        }, 1000)
-    }).catch((err) => {
-        toast.update(id, {
-            render: 'An error occurred while processing your order. Please try again later.',
-            "type": "error",
-            isLoading: false,
-            autoClose: true,
-        })
-        console.error(err)
+    method: 'POST',
+    body: {
+      ...form.value,
+      products: cartStore.products,
+    },
+  }).then(() => {
+    toast.update(id, {
+        render: 'Order completed successfully! Redirecting...',
+        "type": "success",
+        isLoading: false,
+        autoClose: true,
     })
+    // fake redirect
+    setTimeout(() => {
+      navigateTo({ name: 'success' }, { replace: true })
+    }, 1000)
+  }).catch((err) => {
+    toast.update(id, {
+        render: 'An error occurred while processing your order. Please try again later.',
+        "type": "error",
+        isLoading: false,
+        autoClose: true,
+    })
+    console.error(err)
+  })
 }
 </script>
 
@@ -275,9 +275,3 @@ async function placeOrder(){
     </section>
   </div>
 </template>
-
-<style scoped>
-  .dark-mode .coupon-btn {
-    
-  }
-</style>

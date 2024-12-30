@@ -1,15 +1,15 @@
 <script lang="ts" setup>
+// eslint-disable-next-line no-undef
 const colorMode = useColorMode()
-
 </script>
 
 <template>
   <main :class="colorMode.value">
     <AppNavigation />
-    
+
     <div class="containerize pt-20">
       <div class="nuxt-page">
-        <NuxtPage/>
+        <NuxtPage />
       </div>
 
       <AppFooter />
